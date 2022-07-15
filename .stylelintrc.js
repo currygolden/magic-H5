@@ -1,7 +1,7 @@
 module.exports = {
     extends: 'stylelint-config-standard',
     rules: {
-        'indentation': 2,
+        'indentation': 4,
         'selector-pseudo-element-no-unknown': [
             true,
             {

@@ -118,7 +118,7 @@ export default {
     methods: {
         changeStyleWithScale,
         getShapeStyle,
-
+        // 处理编辑器的鼠标事件
         handleMouseDown(e) {
             // 如果没有选中组件 在画布上点击时需要调用 e.preventDefault() 防止触发 drop 事件
             if (!this.curComponent || (this.curComponent.component != 'v-text' && this.curComponent.component != 'rect-shape')) {
@@ -167,6 +167,7 @@ export default {
             document.addEventListener('mouseup', up)
         },
 
+        // 处理画布的选中区域
         hideArea() {
             this.isShowArea = 0
             this.width = 0
@@ -255,6 +256,7 @@ export default {
             return result
         },
 
+        // 处理鼠标右键
         handleContextMenu(e) {
             e.stopPropagation()
             e.preventDefault()
@@ -272,7 +274,7 @@ export default {
                 top += target.offsetTop
                 target = target.parentNode
             }
-
+            // 确定菜单栏的定位属性
             this.$store.commit('showContextMenu', { top, left })
         },
 

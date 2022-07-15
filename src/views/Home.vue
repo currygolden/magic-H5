@@ -9,6 +9,7 @@
             </section>
             <!-- 中间画布 -->
             <section class="center">
+                <!-- 丰富画布容器 -->
                 <div
                     class="content"
                     @drop="handleDrop"
@@ -95,14 +96,16 @@ export default {
 
             return data
         },
-
+        // drop 事件怎么触发的，由元素被丢过来
         handleDrop(e) {
             e.preventDefault()
             e.stopPropagation()
             const index = e.dataTransfer.getData('index')
+            // 拿到元素二维坐标的一些属性
             const rectInfo = this.editor.getBoundingClientRect()
             if (index) {
                 const component = deepCopy(componentList[index])
+                // 获取元素相对与画布的绝对定位属性
                 component.style.top = e.clientY - rectInfo.y
                 component.style.left = e.clientX - rectInfo.x
                 component.id = generateID()
@@ -110,12 +113,12 @@ export default {
                 this.$store.commit('recordSnapshot')
             }
         },
-
+        // 拖拽中
         handleDragOver(e) {
             e.preventDefault()
             e.dataTransfer.dropEffect = 'copy'
         },
-
+        // 容器组件的mouse交互行为
         handleMouseDown(e) {
             e.stopPropagation()
             this.$store.commit('setClickComponentStatus', false)

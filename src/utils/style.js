@@ -21,6 +21,7 @@ export const styleData = [
     { key: 'opacity', label: '透明度' },
 ]
 
+// 格式化样式属性
 export function getShapeStyle(style) {
     const result = {};
     ['width', 'height', 'top', 'left', 'rotate'].forEach(attr => {
